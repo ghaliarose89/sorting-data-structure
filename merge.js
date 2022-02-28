@@ -1,0 +1,23 @@
+ function mergeSort (arr){
+     if (arr.length<=1)
+     return arr;
+     
+        let middle = Math.floor(arr.length/2);
+        let left = arr.slice (0,middle);
+        let right = arr.slice(middle);
+        return merge (mergeSort(left), mergeSort(right));
+    
+ };
+
+ function merge(left,right){
+     const result=[];
+     while (left.length && right.length){
+         if (left[0]<right[0])
+         result.push(left.shift());
+         else result.push(right.shift());
+     }
+     return result.concat(left, right);
+ };
+
+ const arr = [4,5,2,1,3,8];
+ console.log(mergeSort(arr))
